@@ -1,0 +1,2 @@
+# decimal
+Go Decimal package
