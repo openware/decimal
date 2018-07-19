@@ -237,3 +237,22 @@ func (decimal Decimal) Uint64() uint64 {
 func (decimal Decimal) Value() (driver.Value, error) {
 	return decimal.String(), nil
 }
+
+// FromString returns Decimal parsed from string input.
+func FromString(value string) (Decimal, error) {
+	var number Decimal
+	err := number.Scan(value)
+	return number, err
+}
+
+// Must is a helper that wraps a call to a function returning (Decimal, error)
+// and panics if the error is non-nil. It is intended for use in variable
+// initializations such as
+//	var number = decimal.Must(decimal.FromString("5000.0"));
+func Must(number Decimal, err error) Decimal {
+	if err != nil {
+		panic(err)
+	}
+
+	return number
+}
