@@ -41,16 +41,15 @@ func TestDecimal_Scan_CanHoldMaxValue(t *testing.T) {
 
 	var actual Decimal
 
-	err := actual.Scan([]byte("9999999999.99999999"))
+	err := actual.Scan([]byte("99999999999.99999999"))
 	test.NoError(err)
-	test.Equal("9999999999.99999999", actual.String())
+	test.Equal("99999999999.99999999", actual.String())
 }
 
 func TestDecimal_Scan_ReturnsErrorOnTooBigNumber(t *testing.T) {
 	test := assert.New(t)
 
 	var actual Decimal
-
 	err := actual.Scan([]byte("100000000000.0"))
 	test.Error(err)
 	test.Contains(err.Error(), "can't hold integer part")
