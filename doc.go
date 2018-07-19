@@ -8,5 +8,5 @@
 // Decimal was designed to be able to store 1 satoshi value precisely:
 // 0.00000001
 //
-// Type is equivalent to DECIMAL(19, 8) UNSIGNED MySQL type.
+// Type is equivalent to MySQL type DECIMAL(19, 8) UNSIGNED.
 package decimal
