@@ -192,3 +192,14 @@ func BenchmarkDecimal_Multiplication(b *testing.B) {
 		x.Multiply(y)
 	}
 }
+
+func TestAllDecimalPrint(t *testing.T) {
+	const s = "0.12345600"
+	d, err := FromString(s)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if ds := d.String(); ds != s {
+		t.Fatalf("got %q want %q", ds, s)
+	}
+}
